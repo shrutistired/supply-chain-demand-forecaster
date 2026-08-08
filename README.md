@@ -1,26 +1,26 @@
 # Retail Demand Forecasting Pipeline
 
 ## Project Overview
-An end-to-end time-series machine learning pipeline using an XGBRegressor model to forecast retail inventory demand. The model is engineered to handle over 3 million historical transaction records across various product families, focusing on robust feature engineering and strict mitigation of data leakage in time-series validation[cite: 1]. 
+An end-to-end time-series machine learning pipeline using an XGBRegressor model to forecast retail inventory demand. The model is engineered to handle over 3 million historical transaction records across various product families, focusing on robust feature engineering and strict mitigation of data leakage in time-series validation. 
 
 ## Key Engineering Achievements
-* **Data Leakage Mitigation:** Identified and resolved critical test-set leakage by re-architecting features from an initial 1-day lag to a strict 16-day lag[cite: 1]. This adjustment simulated real-world blind forecasting and successfully dropped the Kaggle RMSLE score from 1.95 to 0.8[cite: 1].
-* **Feature Selection & Optimization:** Conducted Mutual Information (MI) scoring for feature selection, actively determining that retaining features with a 0 MI score prevented model degradation[cite: 1]. Additionally, established that dropping null values within lag and rolling features yielded superior performance compared to imputation techniques[cite: 1].
-* **Memory Management:** Overcame `MemoryError` hardware constraints during the complex rolling window transformations by strategically sampling the most recent 100,000 rows for the final training execution, preserving temporal relevance while ensuring stable pipeline fitting[cite: 1].
-* **Metric Improvements:** Successfully reduced the baseline Mean Absolute Error (MAE) from 172.8749 down to 54.6189 through targeted lag engineering (16, 21, and 30 days) and rolling average shifts[cite: 1].
-* **Pipeline Deployment:** Migrated the data architecture from static CSVs to a PostgreSQL database utilizing SQLAlchemy and Psycopg2, enabling chunked memory loading and scalable feature retrieval for the inference backend[cite: 1].
+* **Data Leakage Mitigation:** Identified and resolved critical test-set leakage by re-architecting features from an initial 1-day lag to a strict 16-day lag. This adjustment simulated real-world blind forecasting and successfully dropped the Kaggle RMSLE score from 1.95 to 0.8.
+* **Feature Selection & Optimization:** Conducted Mutual Information (MI) scoring for feature selection, actively determining that retaining features with a 0 MI score prevented model degradation. Additionally, established that dropping null values within lag and rolling features yielded superior performance compared to imputation techniques.
+* **Memory Management:** Overcame `MemoryError` hardware constraints during the complex rolling window transformations by strategically sampling the most recent 100,000 rows for the final training execution, preserving temporal relevance while ensuring stable pipeline fitting.
+* **Metric Improvements:** Successfully reduced the baseline Mean Absolute Error (MAE) from 172.8749 down to 54.6189 through targeted lag engineering (16, 21, and 30 days) and rolling average shifts.
+* **Pipeline Deployment:** Migrated the data architecture from static CSVs to a PostgreSQL database utilizing SQLAlchemy and Psycopg2, enabling chunked memory loading and scalable feature retrieval for the inference backend.
 
 ## Tech Stack
-* **Machine Learning:** XGBoost, Scikit-Learn[cite: 1]
-* **Data Engineering:** Pandas, NumPy, Time-Series Lag Engineering[cite: 1]
-* **Database Management:** PostgreSQL, SQLAlchemy, Psycopg2[cite: 1]
-* **Environment:** Jupyter Notebook[cite: 1]
+* **Machine Learning:** XGBoost, Scikit-Learn
+* **Data Engineering:** Pandas, NumPy, Time-Series Lag Engineering
+* **Database Management:** PostgreSQL, SQLAlchemy, Psycopg2
+* **Environment:** Jupyter Notebook
 
 ## The Data
 The model is trained on store sales data factoring in:
-* Historical daily unit sales and localized holiday events[cite: 1]
-* Store metadata including city, state, cluster, and type[cite: 1]
-* Daily interpolated oil prices (`dcoilwtico`), an economic indicator for the region[cite: 1]
+* Historical daily unit sales and localized holiday events
+* Store metadata including city, state, cluster, and type
+* Daily interpolated oil prices (`dcoilwtico`), an economic indicator for the region
 
 ## Quick Start
 To run this pipeline locally, clone the repository and install the dependencies:
