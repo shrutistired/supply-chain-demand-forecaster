@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supply Chain Demand Engine</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px;
+               margin: 50px auto; padding: 20px; }
+        h1 { color: #2c3e50; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px;
+                        border: 1px solid #ccc; border-radius: 4px; }
+        button { margin-top: 20px; padding: 10px 20px; background: #2c3e50;
+                 color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #34495e; }
+    </style>
+</head>
+<body>
+    <h1>🏪 Supply Chain Demand Engine</h1>
+    <p>Predict weekly sales demand and get automated reorder alerts.</p>
+
+    <form action="/predict" method="POST">
+        <label>Store Number (1-54):</label>
+        <input type="number" name="store_nbr" min="1" max="54" required>
+
+        <label>Product Family:</label>
+        <select name="family">
+            <option>AUTOMOTIVE</option>
+            <option>BABY CARE</option>
+            <option>BEAUTY</option>
+            <option>BEVERAGES</option>
+            <option>BOOKS</option>
+            <option>BREAD/BAKERY</option>
+            <option>CLEANING</option>
+            <option>DAIRY</option>
+            <option>DELI</option>
+            <option>EGGS</option>
+            <option>FROZEN FOODS</option>
+            <option>GROCERY I</option>
+            <option>GROCERY II</option>
+            <option>HARDWARE</option>
+            <option>HOME AND KITCHEN I</option>
+            <option>HOME AND KITCHEN II</option>
+            <option>HOME APPLIANCES</option>
+            <option>HOME CARE</option>
+            <option>LADIESWEAR</option>
+            <option>LAWN AND GARDEN</option>
+            <option>LINGERIE</option>
+            <option>LIQUOR,WINE,BEER</option>
+            <option>MAGAZINES</option>
+            <option>MEATS</option>
+            <option>PERSONAL CARE</option>
+            <option>PET SUPPLIES</option>
+            <option>PLAYERS AND ELECTRONICS</option>
+            <option>POULTRY</option>
+            <option>PREPARED FOODS</option>
+            <option>PRODUCE</option>
+            <option>SCHOOL AND OFFICE SUPPLIES</option>
+            <option>SEAFOOD</option>
+        </select>
+
+        <label>On Promotion?</label>
+        <select name="onpromotion">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <button type="submit">Predict Demand →</button>
+    </form>
+</body>
+</html>

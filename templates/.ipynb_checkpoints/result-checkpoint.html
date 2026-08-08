@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demand Forecast Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px;
+               margin: 50px auto; padding: 20px; }
+        h1 { color: #2c3e50; }
+        .result-box { background: #f8f9fa; border-left: 4px solid #2c3e50;
+                      padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .alert-box { padding: 15px; border-radius: 4px;
+                     margin: 20px 0; font-size: 16px; }
+        .prediction { font-size: 48px; font-weight: bold; color: #2c3e50; }
+        a { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <h1>📊 Demand Forecast</h1>
+
+    <div class="result-box">
+        <p><strong>Store:</strong> {{ store }}</p>
+        <p><strong>Product Family:</strong> {{ family }}</p>
+        <p>Predicted weekly demand:</p>
+        <p class="prediction">{{ prediction }} units</p>
+    </div>
+
+    <div class="alert-box">
+        {{ alert }}
+    </div>
+
+    <a href="/">← New Prediction</a>
+</body>
+</html>
