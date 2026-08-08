@@ -1,10 +1,18 @@
 # Retail Demand Forecasting Pipeline
 
+### 🖥️ Application Interface
+
+**1. Demand Engine Input Dashboard**
+![Supply Chain Demand Engine](Screenshot_dash.png)
+
+**2. Prediction Output & Reorder Alert**
+![Demand Forecast Prediction](Screenshot_predict.png)
+
 ## Project Overview
 An end-to-end time-series machine learning pipeline using an XGBRegressor model to forecast retail inventory demand. The model is engineered to handle over 3 million historical transaction records across various product families, focusing on robust feature engineering and strict mitigation of data leakage in time-series validation. 
 
 ## Key Engineering Achievements
-* **Data Leakage Mitigation:** Identified and resolved critical test-set leakage by re-architecting features from an initial 1-day lag to a strict 16-day lag. This adjustment simulated real-world blind forecasting and successfully dropped the Kaggle RMSLE score from 1.95 to 0.8.
+* **Data Leakage Mitigation:** Identified and resolved critical test-set leakage by re-architecting features from an initial 1-day lag to a strict 16-day lag. This adjustment simulated real-world blind forecasting and successfully dropped the Kaggle RMSLE score from 1.9 to 0.8.
 * **Feature Selection & Optimization:** Conducted Mutual Information (MI) scoring for feature selection, actively determining that retaining features with a 0 MI score prevented model degradation. Additionally, established that dropping null values within lag and rolling features yielded superior performance compared to imputation techniques.
 * **Memory Management:** Overcame `MemoryError` hardware constraints during the complex rolling window transformations by strategically sampling the most recent 100,000 rows for the final training execution, preserving temporal relevance while ensuring stable pipeline fitting.
 * **Metric Improvements:** Successfully reduced the baseline Mean Absolute Error (MAE) from 172.8749 down to 54.6189 through targeted lag engineering (16, 21, and 30 days) and rolling average shifts.
